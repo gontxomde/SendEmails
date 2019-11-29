@@ -1,3 +1,4 @@
-config.ini
+config_secret.ini
 *.ipynb
 *csv
+__pycache__

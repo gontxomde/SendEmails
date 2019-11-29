@@ -6,9 +6,7 @@ from email.mime.text import MIMEText
 from email.utils import COMMASPACE, formatdate
 
 
-
-
-def send_mail(send_from, send_to, subject, text,  user, password, files=None):
+def send_mail(send_from, send_to, subject, text, smtp,files=None ):
     
     assert isinstance(send_to, list)
 
@@ -29,12 +27,5 @@ def send_mail(send_from, send_to, subject, text,  user, password, files=None):
         # After the file is closed
         part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
         msg.attach(part)
-
-
-    smtp = smtplib.SMTP('smtp.office365.com',587)
-    smtp.ehlo()
-    smtp.starttls()
-    smtp.login(user,password)
     
     smtp.sendmail(send_from, send_to, msg.as_string())
-    smtp.close()
