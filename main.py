@@ -24,7 +24,7 @@ smtp.login(user, password)
 
 data = pd.read_csv('emails.csv', header = None)
 
-assert body.count('{') == data.shape[1]
+assert body.count('{') == data.shape[1]-1
 
 
 for index, row in data.iterrows():
@@ -36,5 +36,6 @@ for index, row in data.iterrows():
         text = body.format(*row[1:]),
         smtp = smtp
     )
+    print(f"Enviado a {user}")
 smtp.close()
 
