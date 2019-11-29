@@ -22,4 +22,6 @@ El primer mail que se enviaría a mariagomez@dominio.es y contendría el texto:
 
 > Hola María Gomez!!!! Para el amigo invisible de la empresa te ha tocado José Luis Dominguez
 
+Es necesario que haya tantos {} en el cuerpo del mensaje como columnas distintas del destinatario haya en el .csv
+
 En el fichero config_secret.ini (ejemplo en config_secret-example.ini) se deberá poner la informaión de la cuenta que enviará los emails.
