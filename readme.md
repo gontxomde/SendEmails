@@ -3,7 +3,7 @@ Repositorio que puede usarse para enviar emails personalizados a conjuntos de us
 
 > Queremos enviar los correos necesarios para organizar un amigo invisible.
 
-Para ello, partiremos de un fichero .csv que contendrá la dirección de email de cada participante junto a un texto que contiene el nombre de la persona a quien tiene comprar un regalo.
+Para ello, partiremos de un fichero llamado emails.csv que contendrá la dirección de email de cada participante junto a un texto que contiene el nombre de la persona a quien tiene comprar un regalo.
 
 El fichero tendrá que tener esta estructura:
 
