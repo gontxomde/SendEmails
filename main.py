@@ -24,6 +24,9 @@ smtp.login(user, password)
 
 data = pd.read_csv('emails.csv', header = None)
 
+assert body.count('{') == data.shape[1]
+
+
 for index, row in data.iterrows():
 
     send_mail(
