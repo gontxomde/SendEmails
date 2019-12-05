@@ -53,8 +53,6 @@ class Mailer():
             assertionMessage += "."
         assert self.body.count('{') == self.data.shape[1]-len(self.toCaptcha)-1, assertionMessage
 
-        columns = self.data.cols[1:]
-
         for _, row in self.data.iterrows():
             files = []
             textParts = []
