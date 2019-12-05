@@ -53,25 +53,31 @@ class Mailer():
             assertionMessage += "."
         assert self.body.count('{') == self.data.shape[1]-len(self.toCaptcha)-1, assertionMessage
 
+        columns = self.data.cols[1:]
 
         for _, row in self.data.iterrows():
             files = []
-            for element in self.toCaptcha:
-                try:
-                    filename = '{}.png'.format(element)
-                    image = ImageCaptcha(width =  len(row[element]*30))
-                    image.write(row[element], filename)
-                    files.append(filename)
-                except:
-                    print("The column {} you wanna captcha is not a column of the .csv".format(element))
+            textParts = []
+            for element in self.data.columns[1:]:
+                if element in self.toCaptcha:
+                    try:
+                        filename = '{}.png'.format(element)
+                        image = ImageCaptcha(width =  len(row[element]*30))
+                        image.write(row[element], filename)
+                        files.append(filename)
+                    except:
+                        print("The column {} you wanna captcha is not a column of the .csv".format(element))
+                else:
+                    textParts.append(row[element])
 
             self.send_mail(
                 send_to = row[0],
-                text = self.body.format(*row[1:]),
+                text = self.body.format(*textParts),
                 files = files
 
             )
             print(f"Enviado a {row[0]}")
+
 
     def send_mail(self, send_to, text,files=None ):
         print(send_to)
